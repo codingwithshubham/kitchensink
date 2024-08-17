@@ -10,6 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
@@ -51,7 +52,7 @@ public class GlobalExceptionHandlerTest {
     MethodArgumentNotValidException ex = mock(MethodArgumentNotValidException.class);
     BindingResult bindingResult = mock(BindingResult.class);
     when(ex.getBindingResult()).thenReturn(bindingResult);
-    List<ObjectError> objectErrors = List.of(new ObjectError("email", "Unique Email Violation"));
+    List<ObjectError> objectErrors = List.of(new FieldError("", "email", "Unique Email Violation"));
     when(bindingResult.getAllErrors()).thenReturn(objectErrors);
     Map<String, String> expectedErrors = new HashMap<>();
     expectedErrors.put("email", "Unique Email Violation");
