@@ -12,4 +12,6 @@ public final class RepositoryConstants {
   public static final String PHONE_NUMBER = "phone_number";
   public static final String MEMBER_TABLE = "member_table";
 
+  public static final String MEMBERS = "members";
+
 }

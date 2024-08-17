@@ -4,7 +4,6 @@ import com.example.kitchensink.entity.MemberEntity;
 import com.example.kitchensink.exception.ResourceNotFoundException;
 import com.example.kitchensink.repository.MemberRepository;
 import com.example.kitchensink.service.MemberService;
-import jakarta.persistence.NoResultException;
 import jakarta.validation.ValidationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class MemberServiceImpl implements MemberService {
         MemberEntity memberEntity = null;
         try {
             memberEntity = memberRepository.findByEmail(email);
-        } catch (NoResultException e) {
+        } catch (Exception e) {
             // ignore
         }
         return memberEntity != null;
