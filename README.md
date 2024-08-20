@@ -79,12 +79,20 @@ mvn test
 ### API Endpoints
 Below is a list of the main RESTful API endpoints provided by the KitchenSink application. These endpoints allow you to perform various operations on the application data.
 
-* **GET /members:** 
+* **GET /members:**
+
   **Description:** Retrieve all members.
+
+
 * **GET /members/{id}:** 
+
   **Description:** Retrieve a specific member by ID.
+
+
 * **POST /members:** 
+
   **Description:** Create a new member.
+
 ----
 
 This README outlines the steps to build, run, and develop the KitchenSink Spring Boot application. If you encounter any issues or need further assistance, please open an issue on the project's GitHub page.
