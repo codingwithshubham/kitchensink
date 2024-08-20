@@ -16,11 +16,11 @@ Before building and running the KitchenSink application, ensure you have the fol
 * **MongoDB:** Running instance of MongoDB, either locally or via a service.
 
 ### Setup and Installation
-* Clone the Repository
+* **Clone the Repository**
 ```
 git clone https://github.com/codingwithshubham/kitchensink.git
 ```
-* Update Configuration
+* **Update Configuration**
   
 Update the following MongoDB connection details in application.properties located in src/main/resources/.
 ```
@@ -30,12 +30,12 @@ kitchensink.mongodb.databasename
 ```
 The default configuration is set to connect to a MongoDB instance running on localhost with the hostname localhost, port 27017, databasename kitchensink.
 
-* Go to project directory
+* **Go to project directory**
 ```
 cd kitchensink
 ```
 
-* Build the Application
+* **Build the Application**
 
 Use Maven to build the application
 ```
@@ -44,7 +44,7 @@ mvn clean install
 
 This will compile the source code, run unit tests, and package the application into a runnable JAR file.
 
-* Run the Application
+* **Run the Application**
 
 **Option 1:** Run with Maven
 You can run the application directly using Maven:
@@ -76,6 +76,15 @@ mvn test
 * **Model:** MemberEntity.java Represents the domain objects.
 * **Repository:** MemberRepository.java Interfaces with MongoDB to perform CRUD operations.
 
+### API Endpoints
+Below is a list of the main RESTful API endpoints provided by the KitchenSink application. These endpoints allow you to perform various operations on the application data.
+
+* **GET /members:** 
+  **Description:** Retrieve all members.
+* **GET /members/{id}:** 
+  **Description:** Retrieve a specific member by ID.
+* **POST /members:** 
+  **Description:** Create a new member.
 ----
 
 This README outlines the steps to build, run, and develop the KitchenSink Spring Boot application. If you encounter any issues or need further assistance, please open an issue on the project's GitHub page.
