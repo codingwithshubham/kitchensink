@@ -32,13 +32,28 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void createMember(MemberEntity memberEntity) {
+    public MemberEntity createMember(MemberEntity memberEntity) {
         // Check the uniqueness of the email address
         if (emailAlreadyExists(memberEntity.getEmail())) {
             throw new ValidationException("Email Id already exists. Please use a different email id.");
         }
         log.info("Registering member {}", memberEntity.getName());
-        memberRepository.save(memberEntity);
+        return memberRepository.save(memberEntity);
+    }
+
+    @Override
+    public MemberEntity updateMember(MemberEntity memberEntity) {
+        return memberRepository.save(memberEntity);
+    }
+
+    @Override
+    public boolean memberExistsById(Long id) {
+        return memberRepository.existsById(id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        memberRepository.deleteById(id);
     }
 
     /**

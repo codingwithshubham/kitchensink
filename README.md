@@ -93,6 +93,16 @@ Below is a list of the main RESTful API endpoints provided by the KitchenSink ap
 
   **Description:** Create a new member.
 
+
+* **PUT /members/{id}:**
+
+  **Description:** update a specific member by ID.
+
+
+* **Delete /members/{id}:**
+
+  **Description:** Delete a specific member by ID.
+
 ----
 
 This README outlines the steps to build, run, and develop the KitchenSink Spring Boot application. If you encounter any issues or need further assistance, please open an issue on the project's GitHub page.

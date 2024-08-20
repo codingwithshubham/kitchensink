@@ -9,5 +9,11 @@ public interface MemberService {
 
   MemberEntity lookupMemberById(long id);
 
-  void createMember(MemberEntity memberEntity);
+  MemberEntity createMember(MemberEntity memberEntity);
+
+  boolean memberExistsById(Long id);
+
+  MemberEntity updateMember(MemberEntity memberEntity);
+
+  void deleteById(Long id);
 }

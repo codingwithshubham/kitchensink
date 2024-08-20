@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -68,8 +67,10 @@ public class MemberServiceTest {
 
     when(memberRepository.findByEmail("jane@mailinator.com"))
         .thenReturn(null);
+    when(memberRepository.save(newMember)).thenReturn(newMember);
 
-    memberService.createMember(newMember);
+    MemberEntity member = memberService.createMember(newMember);
+    assertEquals(newMember, member);
   }
 
   @Test(expected = ValidationException.class)
@@ -85,5 +86,31 @@ public class MemberServiceTest {
     memberService.createMember(newMember);
   }
 
+  @Test
+  public void testPositiveUpdateMember() {
+    MemberEntity member = new MemberEntity();
+    member.setName("Jane Doe");
+    member.setEmail("jane@mailinator.com");
+    member.setPhoneNumber("2125551234");
 
+    when(memberRepository.save(member))
+        .thenReturn(member);
+
+    MemberEntity updatedMember = memberService.updateMember(member);
+    assertEquals(updatedMember, member);
+  }
+
+  @Test
+  public void testPositiveMemberExistsByIdMember() {
+    when(memberRepository.existsById(1l))
+        .thenReturn(true);
+    assertTrue(memberService.memberExistsById(1l));
+  }
+
+  @Test
+  public void testNegativeMemberExistsByIdMember() {
+    when(memberRepository.existsById(1l))
+        .thenReturn(false);
+    assertFalse(memberService.memberExistsById(1l));
+  }
 }
