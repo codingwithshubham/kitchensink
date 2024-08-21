@@ -103,6 +103,35 @@ Below is a list of the main RESTful API endpoints provided by the KitchenSink ap
 
   **Description:** Delete a specific member by ID.
 
+
+### API Security
+APIs are secured through Basic Authentication.
+
+Below 3 APIs are accessible by USER role as well as ADMIN role credentials:
+
+* **GET /members:**
+
+* **GET /members/{id}:**
+
+* **POST /members:**
+
+
+Below 2 APIs are accessible by ADMIN role credentials only:
+
+* **PUT /members/{id}:**
+
+* **Delete /members/{id}:**
+
+
+## Role Credentials
+
+For ease of testing, the following in memory default credentials are provided, but we can configure the database to store the credentials.
+
+* **USER:** username: user, password: user
+
+* **ADMIN:** username: admin, password: admin
+
+
 ----
 
 This README outlines the steps to build, run, and develop the KitchenSink Spring Boot application. If you encounter any issues or need further assistance, please open an issue on the project's GitHub page.
