@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class MemberResource {
   @Autowired
   private MemberService memberService;
 
+  @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<List<MemberEntity>> getAllMembers() {
     List<MemberEntity> memberEntities = memberService.listAllMembers();
@@ -28,6 +30,7 @@ public class MemberResource {
     return new ResponseEntity<>(memberEntities, HttpStatus.OK);
   }
 
+  @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
   @GetMapping(value = "/{id:[0-9][0-9]*}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<MemberEntity> getMemberById(@PathVariable("id") long id) {
     MemberEntity memberEntity = memberService.lookupMemberById(id);
@@ -35,6 +38,7 @@ public class MemberResource {
     return new ResponseEntity<>(memberEntity, HttpStatus.OK);
   }
 
+  @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<MemberEntity> addMember(@Valid @RequestBody MemberEntity memberEntity) {
     if (memberService.memberExistsById(memberEntity.getId())) {
@@ -45,6 +49,7 @@ public class MemberResource {
     return new ResponseEntity<>(member, HttpStatus.OK);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @PutMapping(value = "/{id:[0-9][0-9]*}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<MemberEntity> updateMember(@PathVariable("id") long id, @RequestBody MemberEntity memberEntity) {
 
@@ -59,6 +64,7 @@ public class MemberResource {
     return new ResponseEntity<>(updatedMember, HttpStatus.OK);
   }
 
+  @PreAuthorize("hasRole('ADMIN')")
   @DeleteMapping(value = "/{id:[0-9][0-9]*}")
   public ResponseEntity<String> deleteMember(@PathVariable("id") long id) {
     if (memberService.memberExistsById(id)) {
