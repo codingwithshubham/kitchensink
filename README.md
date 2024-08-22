@@ -132,6 +132,7 @@ For ease of testing, the following in memory default credentials are provided, b
 * **ADMIN:** username: admin, password: admin
 
 
+
 ----
 
 This README outlines the steps to build, run, and develop the KitchenSink Spring Boot application. If you encounter any issues or need further assistance, please open an issue on the project's GitHub page.
